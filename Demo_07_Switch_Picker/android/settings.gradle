@@ -1,0 +1,3 @@
+rootProject.name = 'Demo_07_Switch_Picker'
+
+include ':app'

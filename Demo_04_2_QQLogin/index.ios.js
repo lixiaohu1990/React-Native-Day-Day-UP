@@ -38,6 +38,8 @@ class Demo_04_2_QQLogin extends Component {
                    numberOfLines = {1}
                    secureTextEntry={true}
                    keyboardType = 'numeric'
+
+
         ></TextInput>
 
         <View style={styles.viewCommit}>
@@ -51,6 +53,7 @@ class Demo_04_2_QQLogin extends Component {
         </View>
 
       </View>
+
     );
   }
 }
