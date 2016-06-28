@@ -1,0 +1,3 @@
+rootProject.name = 'Demo_03_Navigator'
+
+include ':app'
