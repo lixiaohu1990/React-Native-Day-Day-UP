@@ -3,9 +3,10 @@
 ### ECMAScript 6 入门
 http://es6.ruanyifeng.com
 
+### [CSS 参考手册](http://www.runoob.com/cssref/css3-pr-align-self.html)
 
 ### ScrollView
-http://facebook.github.io/react-native/docs/scrollview.html#content
+<http://facebook.github.io/react-native/docs/scrollview.html#content>
 
 
 ### Switch & Picker
@@ -34,9 +35,11 @@ http://facebook.github.io/react-native/docs/scrollview.html#content
 * TouchableWithoutFeedback
 
 ### ListView
+**ListView.DataSource**
 
+<http://reactnative.cn/docs/0.27/listviewdatasource.html#content>
 
-#### SampleAppMovies
+####[ SampleAppMovies](http://reactnative.cn/docs/0.27/sample-application-movies.html#content)
 ```js
 constructor(props) {
     super(props);   //这一句不能省略，照抄即可
@@ -72,6 +75,87 @@ fetchData() {
   }
 ```
 
-**ListView.DataSource**
 
-http://reactnative.cn/docs/0.27/listviewdatasource.html#content
+
+### 深入浅出 React Native：使用 JavaScript 构建原生应用
+<https://zhuanlan.zhihu.com/p/19996445>
+#### 开启严格模式，并导入 react-native 组件
+``` js
+// 开启严格模式
+ 'use strict';
+ // 导入react-native模块
+import React, { Component } from 'react';
+import SearchPage from './SearchPage';
+import { 
+	AppRegistry, 
+	Text,
+	StyleSheet, 
+	NavigatorIOS,
+	TextInput,
+	View,
+	TouchableHighlight,
+	ActivityIndicatorIOS,
+	Image
+	
+} from 'react-native';
+```
+
+#### 定义App的入口，并提供根组件
+``` js
+AppRegistry.registerComponent('AwesomeProject', function() { return PropertyFinderApp });
+```
+#### 将一个类供其它文件使用
+``` js
+module.exports = SearchPage;
+
+// 导入组件
+var SearchPage = require('./SearchPage');
+```
+
+####  `NavigatorIOS`使用方式：
+##### 1.构造一个navigation controller，应用样式，并把初始路由设置为`SearchPage`，路由就是一种定义应用导航的一种技术，即定义页面——或者说是路由——与 URL 的对应关系
+
+``` js
+class PropertyFinderApp extends Component{
+	render(){
+		return(
+			<NavigatorIOS
+				style={styles.container}
+				initialRoute={
+					{
+						title: 'Property Finder',
+						component: SearchPage,
+					}
+				}/>
+		);
+	}
+}
+```
+##### 2.从一级页面push到二级页面
+``` js
+this.props.navigator.push({
+	title:'Result',
+	component: SearchResult,
+	passProps: {listings: response.listings}
+});
+```
+
+
+##### 3.二级页面获取传递的数据
+``` js
+constructor(props) {
+		super(props);
+		// 通过 ListView.DataSource 将 ListView 的数据引入，
+		// 还有一个函数来显示每一行UI
+		var dataSource = new ListView.DataSource({
+
+			// 在构建数据源的同时，还需要一个函数用来比较每两行之间是否重复
+			rowHasChanged:(r1, r2) => r1.guid !== r2.guid
+			});
+		this.state = {
+			dataSource: dataSource.cloneWithRows(this.props.listings)
+		};
+	}
+```
+
+
