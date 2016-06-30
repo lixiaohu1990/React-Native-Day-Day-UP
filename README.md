@@ -1,9 +1,6 @@
 # React-Native-Day-Day-UP
 
-### ECMAScript 6 入门
-http://es6.ruanyifeng.com
 
-### [CSS 参考手册](http://www.runoob.com/cssref/css3-pr-align-self.html)
 
 ### ScrollView
 <http://facebook.github.io/react-native/docs/scrollview.html#content>
@@ -181,5 +178,16 @@ constructor(props) {
 	* Text元素可以相互嵌套，且存在样式继承关系
 	* numberOfLines 需要放在最外层的Text元素上，且虽然截取了文字但是还是会占用空间
 	
+	
+#### 其它资源
+* [react native 环境搭建](https://segmentfault.com/a/1190000003775004)
 
+* [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
+* [Flex 布局教程：实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
+
+*  [ECMAScript 6 入门](http://es6.ruanyifeng.com)
+
+*  [CSS 参考手册](http://www.runoob.com/cssref/css3-pr-align-self.html)
+
+* [《TypeScript 中文入门教程》](http://www.cnblogs.com/tansm/p/TypeScript_Handbook.html)
