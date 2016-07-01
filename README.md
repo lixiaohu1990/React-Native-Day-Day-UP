@@ -182,9 +182,31 @@ constructor(props) {
 #### 其它资源
 * [react native 环境搭建](https://segmentfault.com/a/1190000003775004)
 
+* [对组件的引用（refs）](http://reactnative.cn/post/608)
+
+* [新手理解Navigator的教程](http://bbs.reactnative.cn/topic/20/新手理解navigator的教程)
+
+* [前端开发中的JS调试技巧](http://www.css88.com/archives/6137)
+
+* [React/React Native 的ES5 ES6写法对照表] (http://bbs.reactnative.cn/topic/15/react-react-native-的es5-es6写法对照表)
+
+* [React-Native入门指南](https://github.com/vczero/react-native-lesson)
+
+* [React-Native学习指南](http://blogread.cn/it/article/7919?f=hot1&utm_source=tuicool&utm_medium=referral)
+* [React Native专题] (http://www.lcode.org/react-native/)
+* [React Native的常见问题](http://bbs.reactnative.cn/topic/130/新手提问前先来这里看看-react-native的常见问题)
+
+#### Demo
+
+* [深入浅出 React Native：使用 JavaScript 构建原生应用](https://zhuanlan.zhihu.com/p/19996445)
+
+#### 布局相关
 * [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
 * [Flex 布局教程：实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
+
+#### 各种语法
+* [JSX语法](http://www.css88.com/archives/5632)
 
 *  [ECMAScript 6 入门](http://es6.ruanyifeng.com)
 
