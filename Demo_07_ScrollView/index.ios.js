@@ -22,118 +22,122 @@ class Demo_07_ScrollView extends Component {
             showsVerticalScrollIndicator={true}
             contentContainerStyle={styles.contentContainer}
         >
-            <View style={[styles.row, styles.height160, {paddingLeft:10, paddingTop:20},{boderColor:'red', borderWidth:1}]}>
-                <View style={styles.part_1_left}>
+            <View style={[styles.row, styles.height160,styles.bottom_border, {paddingTop:20}]}>
+                <View style={[styles.part_1_left, {paddingLeft:10}]}>
                     <Text style={[styles.font14,styles.green]}>我们约会吧</Text>
                     <Text style={[styles.font10, styles.marTop14]}>恋爱家人好朋友</Text>
                     <Image style={[styles.yue]} source={{uri:'http://p0.meituan.net/mmc/fe4d2e89827aa829e12e2557ded363a112289.png'}}></Image>
                 </View>
 
                 <View style={[styles.part_1_right]}>
-                    <View style={[{flex:1,flexDirection:'row'}, {boderColor:'red', borderWidth:1}]}>
-                        <View style={[{flex: 1},{boderColor:'red', borderWidth:1}]}>
-                            <Text style={[styles.red, styles.font14, {boderColor:'red', borderWidth:1}]}>超低价值</Text>
-                            <Text style={styles.font10}>十元惠生活</Text>
+                    <View style={[styles.row, styles.bottom_border]}>
+                        <View style={[{flex: 1, alignItems:'center'}]}>
+                            <Text style={[styles.red, styles.font14]}>超低价值</Text>
+                            <Text style={[styles.font10, styles.marTop14]}>十元惠生活</Text>
                         </View>
-                        <View style={{flex: 1, alignSelf:'center'}}>
+                        <View style={{flex: 1, alignItems:'center'}}>
                             <Image style={{width:55, height:55}} source={{uri : 'http://p0.meituan.net/mmc/a06d0c5c0a972e784345b2d648b034ec9710.jpg'}}>
 
                             </Image>
                         </View>
                     </View>
-                    <View style={[{flex:1, flexDirection:'row',boderColor:'red', borderWidth:1}]}>
-                        <View style={{flex:1}}><Text>2</Text></View>
-                        <View style={{flex:1}}><Text>3</Text></View>
-                    </View>
-                </View>
-            </View>
+                    <View style={[styles.row,{paddingLeft:10}]}>
+                        <View style={{flex:1, borderRightWidth:1, borderColor:'#DCD7CD', paddingTop:5}}>
+                            <Text style={[{color:'#F742AB', marginBottom:10}, styles.font14]}>聚餐宴请</Text>
+                            <Text style={styles.font10}>朋友家人常聚</Text>
+                            <Image style={{width:25, height:25, alignSelf:'center'}} source={{uri: 'http://p1.meituan.net/mmc/08615b8ae15d03c44cc5eb9bda381cb212714.png'}}></Image>
+                        </View>
+                        <View style={{flex:1, paddingLeft:10, paddingTop:5}}>
+                            <Text style={[{flex:1,color:'#FF8601'}, styles.font14]}>名店抢购</Text>
+                            <Text style={[{flex:1}, styles.font10]}>距离结束</Text>
+                            <View style={[{flexDirection:'row', height:20,marginBottom:5, alignItems:'center'}]}>
+                                <Text style={[styles.timeCoutDownBG,styles.font10]}>01</Text><Text>:</Text ><Text style={[styles.timeCoutDownBG,styles.font10]}>37</Text><Text>:</Text><Text style={[styles.timeCoutDownBG, styles.font10]}>36</Text>
+                            </View>
 
-
-
-
-                <View style={[styles.height160, styles.row,]}>
-                    <View style={[styles.height160, styles.part_1_left,]}>
-                    <Text style={[styles.font14, styles.marTop18, styles.marLeft10, styles.green]}>我们约吧</Text>
-                    <Text style={[styles.font10, styles.marTop14, styles.marLeft10]}>恋爱家人好朋友</Text>
-                    <Image style={[styles.yue]} source={{uri: 'http://p0.meituan.net/mmc/fe4d2e89827aa829e12e2557ded363a112289.png'}}></Image>
-                </View>
-                    <View style={[styles.height160, styles.part_1_right,]}>
-                        <View style={[styles.row, {flex:1}]}>
-                          <View style={{flex:1}}>
-                            <Text style={[styles.font14, {marginLeft:30}, styles.red]}>超低价值</Text>
-                            <Text style={[styles.font14, {fontSize:12, marginTop:14, marginLeft:30,color: 'black'}]}>十元惠生活</Text>
-                          </View>
-                          <View style={[{flex:1}, {marginTop:-13}]}>
-                          <Image style={[styles.hanbao]} source={{uri: 'http://p0.meituan.net/mmc/a06d0c5c0a972e784345b2d648b034ec9710.jpg'}}></Image>
                         </View>
                     </View>
-          <View style={[{flex:1, flexDirection: 'row',borderTopWidth:0.5, borderColor:'#DDD8CE'}]}>
-            <View style={{flex:1, borderRightWidth:1, borderColor:'#DDD8CE',}}>
-                <Text style={{color:'#F742AB', marginLeft:5,fontWeight:'bold', fontSize:15, marginTop:8}}>聚餐宴请</Text>
-                <Text style={{fontSize:12,marginTop:4, marginLeft:5}}>朋友家人常聚聚</Text>
-                <Image style={{height:25,width:25, alignSelf: 'center'}} source={{uri: 'http://p1.meituan.net/mmc/08615b8ae15d03c44cc5eb9bda381cb212714.png'}}></Image>
+                </View>
             </View>
-            <View style={{flex:1,}}>
-                <Text style={[styles.font14,{color:'#FF8601', marginTop:8, marginLeft:5}]}>名店抢购</Text>
-                <Text style={[{marginLeft:5, fontSize:12,marginTop:4,}]}>还有</Text>
-                <Text style={[{marginLeft:5, fontSize:12,marginTop:4,}]}>12:06:12分</Text>
+
+            <View style={{height: 20, backgroundColor:'#DCD7CD'}}/>
+            <View style={[styles.height65,  {flexDirection:'row'}]}>
+                <View style={{flex:1, alignSelf:'center', paddingLeft:10}}>
+                    <Text style={{color:'#FF8601', fontSize:20, fontWeight:'bold'}}>一元吃大餐</Text>
+                    <Text style={styles.font10}>新用户专享</Text>
+                </View>
+
+                <View style={{flex:1}}>
+                    <Image style={{flex:1, alignSelf: 'center', width:150,height:50,}}
+                           source={{uri:'http://p1.meituan.net/280.0/groupop/7f8208b653aa51d2175848168c28aa0b23269.jpg'}}></Image>
+                </View>
+
+
             </View>
-          </View>
-        </View>
-    </View>
-    <View>
-      <View style={{borderBottomWidth:1,borderTopWidth:1, borderColor:'#DDD8CE', marginTop:40,height:65, flexDirection: 'row',paddingTop:10}}>
-        <View style={[{flex:1}]}>
-            <Text style={{fontSize:17, color:'#FF7F60', fontWeight:'900', marginLeft:7}}>一元吃大餐</Text>
-            <Text style={{marginLeft:7, fontSize:12, marginTop:3}}>新用户专享</Text>
-        </View>
-        <View style={{flex:1}}>
-            <Image style={{height:50, width:120}} source={{uri:'http://p1.meituan.net/280.0/groupop/7f8208b653aa51d2175848168c28aa0b23269.jpg'}}></Image>
-        </View>
-      </View>
-    </View>
-    <View>
-      <View style={{flexDirection: 'row'}}>
-        <View style={[styles.row, {borderColor:'#DDD8CE', borderRightWidth:1, flex:1}]}>
-          <View style={{flex:1,}}>
-            <Text style={{fontSize:17, color:'#EA6644', fontWeight:'bold', marginLeft:7}}>撸串节狂欢</Text>
-            <Text style={{fontSize:12, color:'#97979A', marginTop:3, marginLeft:7}}>烧烤6.6元起</Text>
-          </View>
-          <View style={{flex:1}}>
-            <Image style={{width:60,height:55}} source={{uri: 'http://p1.meituan.net/280.0/groupop/fd8484743cbeb9c751a00e07573c3df319183.png'}}></Image>
-          </View>
-        </View>
-        <View style={[styles.row, {flex:1}]}>
-          <View style={{flex:1}}>
-            <Text style={{fontSize:17, color:'#EA6644', fontWeight:'bold', marginLeft:7}}>毕业旅行</Text>
-            <Text style={{fontSize:12, color:'#97979A', marginTop:3, marginLeft:7}}>选好酒店才安心</Text>
-          </View>
-          <View style={{flex:1}}>
-            <Image style={{width:60,height:55}} source={{uri: 'http://p0.meituan.net/280.0/groupop/ba4422451254f23e117dedb4c6c865fc10596.jpg'}}></Image>
-          </View>
-        </View>
-      </View>
-      <View style={{flexDirection: 'row',}}>
-        <View style={[styles.row, {borderColor:'#DDD8CE', borderRightWidth:1,  marginLeft:1},]}>
-          <View style={{flex:1}}>
-            <Text style={{fontSize:17, color:'#EA6644', fontWeight:'bold', marginLeft:7}}>0元餐来袭</Text>
-            <Text style={{fontSize:12, color:'#97979A', marginTop:3, marginLeft:7}}>免费吃喝玩乐购</Text>
-          </View>
-          <View style={{flex:1}}>
-            <Image style={{width:60,height:55}} source={{uri: 'http://p0.meituan.net/280.0/groupop/6bf3e31d75559df76d50b2d18630a7c726908.png'}}></Image>
-          </View>
-        </View>
-        <View style={styles.row}>
-          <View style={{flex:1}}>
-            <Text style={{fontSize:17, color:'#EA6644', fontWeight:'bold', marginLeft:7}}>热门团购</Text>
-            <Text style={{fontSize:12, color:'#97979A', marginTop:3, marginLeft:7}}>大家都在买什么</Text>
-          </View>
-          <View style={{flex:1}}>
-            <Image style={{width:60,height:55}} source={{uri: 'http://p1.meituan.net/mmc/a616a48152a895ddb34ca45bd97bbc9d13050.png'}}></Image>
-          </View>
-        </View>
-      </View>
-    </View>
+
+
+            <View style={[styles.row, styles.top_border,{ height:130}]}>
+                <View style={{flex:1}}>
+                    <View style={[styles.row, styles.bottom_border,styles.right_border,{alignItems:'center', justifyContent:'center', paddingLeft:10}]}>
+                        <View style={{flex:1}}>
+                            <Text style={{color:'#FF8601', fontSize:15, fontWeight:'bold'}}>撸串狂欢节</Text>
+                            <Text style={{fontSize:10, marginTop:5}}>烧烤6.6元起</Text>
+                        </View>
+                        <View style={{flex:1}}>
+                            <Image style={{width:65, height:55,alignSelf:'center'}}
+                                   source={{uri:"http://p1.meituan.net/280.0/groupop/fd8484743cbeb9c751a00e07573c3df319183.png"}}>
+                            </Image>
+                        </View>
+                    </View>
+
+                    <View style={[styles.row, styles.bottom_border,styles.right_border,{alignItems:'center', justifyContent:'center', paddingLeft:10}]}>
+                        <View style={{flex:1}}>
+                            <Text style={{color:'#FF8601', fontSize:15, fontWeight:'bold'}}>撸串狂欢节</Text>
+                            <Text style={{fontSize:10, marginTop:5}}>烧烤6.6元起</Text>
+                        </View>
+                        <View style={{flex:1}}>
+                            <Image style={{width:65, height:55,alignSelf:'center'}}
+                                   source={{uri:"http://p1.meituan.net/280.0/groupop/fd8484743cbeb9c751a00e07573c3df319183.png"}}>
+                            </Image>
+                        </View>
+                    </View>
+
+
+                </View>
+
+                <View style={{flex:1}}>
+                    <View style={[styles.row, styles.bottom_border,{alignItems:'center', paddingLeft:10, justifyContent:'center'}]}>
+                        <View style={{flex:1}}>
+                            <Text style={{color:'#FF8601', fontSize:15, fontWeight:'bold'}}>撸串狂欢节</Text>
+                            <Text style={{fontSize:10, marginTop:5}}>烧烤6.6元起</Text>
+                        </View>
+                        <View style={{flex:1}}>
+                            <Image style={{width:65, height:55,alignSelf:'center'}}
+                                   source={{uri:"http://p1.meituan.net/280.0/groupop/fd8484743cbeb9c751a00e07573c3df319183.png"}}>
+                            </Image>
+                        </View>
+                    </View>
+
+                    <View style={[styles.row, styles.bottom_border,{alignItems:'center', justifyContent:'center', paddingLeft:10}]}>
+                        <View style={{flex:1}}>
+                            <Text style={{color:'#FF8601', fontSize:15, fontWeight:'bold'}}>撸串狂欢节</Text>
+                            <Text style={{fontSize:10, marginTop:5}}>烧烤6.6元起</Text>
+                        </View>
+                        <View style={{flex:1}}>
+                            <Image style={{width:65, height:55,alignSelf:'center'}}
+                                   source={{uri:"http://p1.meituan.net/280.0/groupop/fd8484743cbeb9c751a00e07573c3df319183.png"}}>
+                            </Image>
+                        </View>
+                    </View>
+
+
+                </View>
+            </View>
+
+
+
+
+
+
         </ScrollView>
       </View>
     );
@@ -178,6 +182,9 @@ const styles = StyleSheet.create({
   height160:{
       height: 160
   },
+    height65:{
+        height: 65
+    },
   yue:{
       height:80,
       marginRight:14,
@@ -205,10 +212,28 @@ const styles = StyleSheet.create({
       borderColor: '#DCD7CD',
       borderBottomWidth: 1,
   },
+    right_border: {
+        borderRightWidth:1,
+        borderColor:'#DCD7CD'
+    },
+    bottom_border: {
+      borderBottomWidth:1,
+        borderColor:'#DCD7CD'
+    },
+    top_border: {
+        borderTopWidth:1,
+        borderColor:'#DCD7CD'
+    },
   hanbao:{
       height:55,
       width:55
-  }
+  },
+    timeCoutDownBG: {
+        borderRadius:2,
+        backgroundColor:'black',
+        color:'white',
+    }
+
 });
 
 AppRegistry.registerComponent('Demo_07_ScrollView', () => Demo_07_ScrollView);
