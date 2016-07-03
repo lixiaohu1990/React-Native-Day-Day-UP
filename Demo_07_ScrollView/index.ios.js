@@ -14,15 +14,80 @@ import {
   Image,
 } from 'react-native';
 
+// 邮件组件
+
+class Email extends  Component {
+    render(){
+        return (
+            <View style={{margin:30}}>
+                <Text> 动手写组件 </Text>
+                <View style={{backgroundColor:'yellow', flex:1, padding:10}}>
+                    <Text style={[styles.font14, styles.red]}>{this.props.name}</Text>
+                    <Text style={styles.font10}>{this.props.url}</Text>
+                </View>
+            </View>
+
+        );
+    }
+}
+
+//循环一个文章列表
+
+class Article extends Component {
+    render(){
+        return (
+            <View style={[styles.testContainer, {borderBottomWidth:1,borderColor:'#DCD7CD'}]}>
+                <Text style={[styles.font14, styles.red]}>{this.props.title}</Text>
+                <Text style={styles.font10}>{this.props.author}</Text>
+                <Text style={styles.font10}>{this.props.time}</Text>
+            </View>
+
+        );
+    }
+}
+
+
 class Demo_07_ScrollView extends Component {
+    // 构造
+      constructor(props) {
+        super(props);
+        // 初始状态
+          var  data = [{
+              title: "React-Native入门指南",
+              author: "vczero",
+              time: "2015-06-28"
+          },
+              {
+                  title: "为什么世界不一样",
+                  author: "vczero",
+                  time: "2015-06-8"
+              },
+              {
+                  title: "你来，我就告诉你",
+                  author: "vczero",
+                  time: "2015-04-01"
+              }];
+        this.state = {
+            articles: data,
+        };
+      }
   render() {
     return (
+
       <View style={styles.container}>
         <ScrollView
             showsVerticalScrollIndicator={true}
             contentContainerStyle={styles.contentContainer}
         >
-            <View style={[styles.row, styles.height160,styles.bottom_border, {paddingTop:20}]}>
+            <Email name="lixiaohu" url="www.lixiaohu.com"/>
+
+            <Text>循环一个组件的演示</Text>
+            {this.state.articles.map(article => {
+                return (<Article title={article.title} author={article.author} time={article.time} key={article.title}/>)
+            })}
+            <View style={{height: 50, marginTop: 30,backgroundColor:'red'}}/>
+
+            <View style={[styles.row, styles.height160,styles.bottom_border, {paddingTop:20,marginTop:30}]}>
                 <View style={[styles.part_1_left, {paddingLeft:10}]}>
                     <Text style={[styles.font14,styles.green]}>我们约会吧</Text>
                     <Text style={[styles.font10, styles.marTop14]}>恋爱家人好朋友</Text>
@@ -134,10 +199,6 @@ class Demo_07_ScrollView extends Component {
             </View>
 
 
-
-
-
-
         </ScrollView>
       </View>
     );
@@ -232,8 +293,11 @@ const styles = StyleSheet.create({
         borderRadius:2,
         backgroundColor:'black',
         color:'white',
-    }
+    },
+  testContainer:{
 
+                padding:10,
+            }
 });
 
 AppRegistry.registerComponent('Demo_07_ScrollView', () => Demo_07_ScrollView);

@@ -213,3 +213,7 @@ constructor(props) {
 *  [CSS 参考手册](http://www.runoob.com/cssref/css3-pr-align-self.html)
 
 * [《TypeScript 中文入门教程》](http://www.cnblogs.com/tansm/p/TypeScript_Handbook.html)
+
+
+
+http://www.oschina.net/translate/going-native-with-react
