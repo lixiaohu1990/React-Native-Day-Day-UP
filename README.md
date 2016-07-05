@@ -195,6 +195,24 @@ constructor(props) {
 * [React-Native学习指南](http://blogread.cn/it/article/7919?f=hot1&utm_source=tuicool&utm_medium=referral)
 * [React Native专题] (http://www.lcode.org/react-native/)
 * [React Native的常见问题](http://bbs.reactnative.cn/topic/130/新手提问前先来这里看看-react-native的常见问题)
+* [植入原生应用-使用pod](http://reactnative.cn/docs/0.27/embedded-app-ios.html#content)
+* [React Native移植iOS原生项目-手动](http://www.lcode.org/react-native-integrating/)
+	* 第一步：进入到*.xcodeproj文件的上级目录（一定要是他的上级目录），运行React Native初始化命令react-native init [Project Name]，然后输入yes
+	* 第二步：删除Android相关的文件
+		* android
+		* index.android.js
+		* node_modules/react-native/android
+		* node_modules/react-native/ReactAndroid
+	* 第三步：新建Libraries的目录，然后从ios目录下的Libraries下的*.xcodeproj文件全部拖过来
+	* 第四步：添加React Native shell脚本
+		* 选择TARGETS的Build Phases界面-> + ->选择New Run Script Phase添加一个脚本，并命名为Bundle React Native code and images，把ios工程里的脚本引用复制过来，路径为：`export NODE_BINARY=node
+./node_modules/react-native/packager/react-native-xcode.sh`
+	* 第五步：添加.a文件和添加搜索头文件的地址
+		* 删除ios目录，关闭原有工程再重新打开，在工程的Build Phases界面的Link Binary With Libraries,点击最下面的+号，添加Workspace下的.a文件
+		* TARGETS->Build Settings->Header Search Paths中添加一条$(SRCROOT)/node_modules/react-native/React,选择recursive
+		* 添加JavaScriptCore.framework
+		* 如果有需要在`TARGETS->Build Settings-> other linker flags`添加`-lstdc++`
+		* [mac上使用g++编译出错“Undefined symbols for architecture x86_64:” 错误解决办法] (http://www.th7.cn/Program/cp/201409/284464.shtml)
 
 #### Demo
 
@@ -217,3 +235,11 @@ constructor(props) {
 
 
 http://www.oschina.net/translate/going-native-with-react
+
+https://github.com/aerofs/react-native-auto-updater
+
+
+https://github.com/lexrus?tab=repositories
+
+
+[深入理解javascript原型和闭包](http://www.cnblogs.com/wangfupeng1988/p/3977924.html)
