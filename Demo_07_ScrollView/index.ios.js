@@ -12,10 +12,53 @@ import {
   View,
   ScrollView,
   Image,
+  ActionSheetIOS,
 } from 'react-native';
 
-// 邮件组件
+var BUTTON = [
+    'Option 0',
+    'Option 1',
+    'Option 2',
+    'Delete',
+    'Cancle',
+];
 
+const DESTRUCTIVE_INDEX = 3;
+const CANCLE_INDEX = 4;
+class ActionSheetExample extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            clicked: 'none',
+        };
+    }
+
+    render(){
+
+        return(
+            <View>
+                <Text onPress={this.showActionSheet.bind(this)}
+                style={styles.button}>
+                clicked button: {this.state.clicked}
+                </Text>
+            </View>
+        );
+    }
+
+    showActionSheet(){
+        ActionSheetIOS.showActionSheetWithOptions({
+            options:BUTTON,
+            cancelButtonIndex:CANCLE_INDEX,
+            destructiveButtonIndex:DESTRUCTIVE_INDEX,
+            tintColor:'red',
+        },
+        (buttonIndex) => {
+            this.setState({clicked: BUTTON[buttonIndex]});
+        });
+    }
+}
+
+// 邮件组件
 class Email extends  Component {
     render(){
         return (
@@ -79,6 +122,8 @@ class Demo_07_ScrollView extends Component {
             showsVerticalScrollIndicator={true}
             contentContainerStyle={styles.contentContainer}
         >
+            <ActionSheetExample/>
+
             <Email name="lixiaohu" url="www.lixiaohu.com"/>
 
             <Text>循环一个组件的演示</Text>
@@ -297,7 +342,15 @@ const styles = StyleSheet.create({
   testContainer:{
 
                 padding:10,
-            }
+  },
+
+  button: {
+      marginBottom: 10,
+      fontWeight:'bold',
+  },
+
+  
+
 });
 
 AppRegistry.registerComponent('Demo_07_ScrollView', () => Demo_07_ScrollView);

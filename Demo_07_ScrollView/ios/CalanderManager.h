@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface CalanderManager : NSObject
+#import "RCTBridgeModule.h"
+@interface CalanderManager : NSObject <RCTBridgeModule>
 
 @end

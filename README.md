@@ -179,6 +179,53 @@ constructor(props) {
 	* numberOfLines 需要放在最外层的Text元素上，且虽然截取了文字但是还是会占用空间
 	
 	
+####  原生与JS之间的交互
+相关方法         | 用途           |注意事项     | 参数类型 |
+--------------------|------------------|-----------------------|------|
+`RCT_EXPORT_MODULE()`宏 | 添加一个参数指定模块名字   | 如果不指定默认就是OC类名   |------|
+`RCT_REMAP_METHOD()`宏       | 明确声明给JS导出的方法  | 导出到JS的方法名是OC的方法名的第一个部分，返回值必须是void ，要返回结果给Javascript，你必须通过回调或者触发事件来进行  |------|
+ `RCT_REMAP_METHOD()`宏       |指定导出给JS的方法名   | 避免在Javascript端的名字冲突  |
+Strikethrough       | \~~Much wow\~~   | 避免在Javascript端的名字冲突  |------|
+##### [原生模块](http://reactnative.cn/docs/0.27/native-modules-ios.html#content)
+**1.指定在Javascript中访问模块的名字`RCT_EXPORT_MODULE()`**
+
+* 需要导入`#import "RCTBridgeModule.h"`,并实现 `<RCTBridgeModule>`协议
+* `RCT_EXPORT_MODULE()`宏，可以添加一个参数指定模块名字，如果不指定默认就是OC类名
+
+**2.明确声明给JS导出的方法`RCT_EXPORT_METHOD()`**
+
+* 导出到JS的方法名是OC的方法名的第一个部分
+* 可以使用 `RCT_REMAP_METHOD()`宏，指定JS方法名
+* 桥接到JS方法返回值类型必须是`void`
+* React Native的桥接操作是异步的，所以要返回结果给Javascript，你必须通过回调或者触发事件来进行
+
+``` js
+// CalendarManager.h
+#import "RCTBridgeModule.h"
+
+@interface CalendarManager : NSObject <RCTBridgeModule>
+@end
+
+// CalendarManager.m
+@implementation CalendarManager
+
+RCT_EXPORT_MODULE();
+RCT_EXPORT_METHOD(addEvent:(NSString *)name location:(NSString *)location)
+{
+  RCTLogInfo(@"Pretending to create an event %@ at %@", name, location);
+}
+@end
+
+<!--js-->
+var CalendarManager = require('react-native').NativeModules.CalendarManager;
+CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey');
+```
+## 组件汇总
+### [ActionSheetIOS](http://reactnative.cn/docs/0.27/actionsheetios.html#content)
+相关方法         | 用途           |注意事项     | 参数类型 |
+--------------------|------------------|-----------------------|------|
+static showActionSheetWithOptions(options: Object, callback: Function) | 显示一个ActionSheet弹出框   | `options（字符串数组` `cancelButtonIndex(取消按钮索引) ``destructiveButtonIndex (高亮按钮)` `title(标题)``message(标题下方信息)` |------|
+`RCT_REMAP_METHOD()`宏       | 明确声明给JS导出的方法  | 导出到JS的方法名是OC的方法名的第一个部分，返回值必须是void ，要返回结果给Javascript，你必须通过回调或者触发事件来进行  |------|
 #### 其它资源
 * [react native 环境搭建](https://segmentfault.com/a/1190000003775004)
 
@@ -191,10 +238,11 @@ constructor(props) {
 * [React/React Native 的ES5 ES6写法对照表] (http://bbs.reactnative.cn/topic/15/react-react-native-的es5-es6写法对照表)
 
 * [React-Native入门指南](https://github.com/vczero/react-native-lesson)
-
+* [React Native 高质量学习资料汇总](http://www.jianshu.com/p/454f2e6f28e9#rd)
 * [React-Native学习指南](http://blogread.cn/it/article/7919?f=hot1&utm_source=tuicool&utm_medium=referral)
 * [React Native专题] (http://www.lcode.org/react-native/)
 * [React Native的常见问题](http://bbs.reactnative.cn/topic/130/新手提问前先来这里看看-react-native的常见问题)
+* [ReactNative打离线包-ios篇](https://segmentfault.com/a/1190000004189538)
 * [植入原生应用-使用pod](http://reactnative.cn/docs/0.27/embedded-app-ios.html#content)
 * [React Native移植iOS原生项目-手动](http://www.lcode.org/react-native-integrating/)
 	* 第一步：进入到*.xcodeproj文件的上级目录（一定要是他的上级目录），运行React Native初始化命令react-native init [Project Name]，然后输入yes
@@ -214,9 +262,18 @@ constructor(props) {
 		* 如果有需要在`TARGETS->Build Settings-> other linker flags`添加`-lstdc++`
 		* [mac上使用g++编译出错“Undefined symbols for architecture x86_64:” 错误解决办法] (http://www.th7.cn/Program/cp/201409/284464.shtml)
 
+* 编辑器推荐
+	* <https://atom.io>
+	* <https://nuclide.io>
+	* <https://marketplace.visualstudio.com/VSCode>
+	* <https://www.visualstudio.com>
+	
 #### Demo
-
+* [React Native 简单教程](http://www.oschina.net/translate/going-native-with-react)
 * [深入浅出 React Native：使用 JavaScript 构建原生应用](https://zhuanlan.zhihu.com/p/19996445)
+* [React Native开源项目-F8 App环境搭建](http://www.jianshu.com/p/ce3ed0c6c8c3)
+* [example-react-native-redux](https://github.com/alinz/example-react-native-redux) | [文章](http://www.jianshu.com/p/09956d82bca6)
+* [react-native-redux-demo](https://github.com/ninty90/react-native-redux-demo) | [文章](http://www.jianshu.com/p/2c43860b0532)
 
 #### 布局相关
 * [Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
@@ -232,14 +289,35 @@ constructor(props) {
 
 * [《TypeScript 中文入门教程》](http://www.cnblogs.com/tansm/p/TypeScript_Handbook.html)
 
+* [redux](http://cn.redux.js.org//docs/introduction/Motivation.html) | [源码](https://github.com/react-guide/redux-tutorial-cn)
+	* [React Native架构之Redux](http://www.jianshu.com/p/09956d82bca6)
+	* [在react-native中使用redux](http://www.jianshu.com/p/2c43860b0532)
+	* [近期 React-Native With Redux 开发的一点心得](http://www.tuicool.com/articles/mqAFJnR)
+	* [用RN( ListView + Navigator ) + Redux来开发一个ToDoList](http://bbs.reactnative.cn/topic/26/用rn-listview-navigator-redux来开发一个todolist)
+	* [redux-devtools](https://github.com/gaearon/redux-devtools)
 
-
-http://www.oschina.net/translate/going-native-with-react
-
-https://github.com/aerofs/react-native-auto-updater
+* [react-native-auto-updater](https://github.com/aerofs/react-native-auto-updater)
 
 
 https://github.com/lexrus?tab=repositories
 
 
 [深入理解javascript原型和闭包](http://www.cnblogs.com/wangfupeng1988/p/3977924.html)
+
+
+#### 常见错误
+
+* `implicit declaration of function  c99` 时需要添加`#import "RCTConvert.h"`
+* `Fresh react-native ios app not building`<http://stackoverflow.com/questions/36203184/fresh-react-native-ios-app-not-building#>
+
+打包：https://segmentfault.com/a/1190000004189538
+
+
+#### 项目汇总
+* [新闻客户端](https://github.com/tabalt/ReactNativeNews)
+* 码农iOS客户端<https://github.com/starzhy/TheOneCoder>
+* [Hacker新闻客户端](https://github.com/iSimar/HackerNews-React-Native)
+* 美食类APP <https://github.com/ljunb/react-native-iShiWuPai>
+* <https://github.com/zhongjie-chen/rn_rank>
+* http://www.lcode.org/react-native-source-cnode/
+
